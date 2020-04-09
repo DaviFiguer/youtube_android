@@ -511,10 +511,24 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.MuseumView
         return mMuseums.get(position);
     }
 
+    /**
+     método 'setOnItemClickListener()'
+
+     Será utilizado na classe MuseumsActivity juntamente com
+     um adapter para iniciar uma outra atividade onde será possível EDITAR os dados
+     do museu para uma correção ou até mesmo observar mais detalhes que não são
+     apresentados na lista do RecyclerView
+     */
     public void setOnItemClickListener(OnItemClickListener listener){
         this.mOnItemClickListener = listener;
     }
 
+    /**
+     método 'setOnLongClickListener()'
+
+     Sem utilização até o momento. Implementação feita para atender a
+     questão didática para reforçar o conceito de Interface
+     */
     public void setOnLongClickListener(OnLongClickListener listener){
         this.mOnLongClickListener = listener;
     }

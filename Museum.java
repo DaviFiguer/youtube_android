@@ -46,6 +46,10 @@ import androidx.room.PrimaryKey;
  [2] Faremos uso da biblioteca de persistência de dados Room que oferece uma camada de
      abstração sobre o SQlite para permitir acesso fluente e robusto ao banco de dados.
 
+     Room é uma das bibliotecas existentes dentro do conjunto “Android JetPack” apresentado
+     durante o Google I/O de 2018, ela auxilia os desenvolvedores criando uma abstração
+     das camadas de banco de dados (SQLite).
+
      Aplicativos que processam quantidades não triviais de dados estruturados podem se
      beneficiar muito da persistência desses dados localmente. O caso de uso mais comum é
      armazenar as partes de dados relevantes em cache (na memória do dispositivo). Dessa

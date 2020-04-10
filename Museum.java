@@ -126,7 +126,8 @@ import androidx.room.PrimaryKey;
  execução com sucesso do aplicativo haver a necessidade de alguma mudança na estrutura
  de dados que foi definida AQUI nesta classe 'Museum' uma nova versão do banco de dados
  deverá ser informada na classe 'DbRoomDatabase', afinal de contas é necessário avisar
- na classe 'DbRoomDatabase' que uma mudança ocorreu aqui.
+ na classe 'DbRoomDatabase' que uma mudança ocorreu aqui. A classe 'DbRoomDatabase' não
+ foi codificada até este momento.
 
  Detalhe importante [1] - os dados contidos na tabela 'museums' e em outras tabelas
  do banco de dados serão perdidos a não ser que você faça a migração de dados. Para

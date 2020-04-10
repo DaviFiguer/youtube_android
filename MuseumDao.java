@@ -81,6 +81,9 @@ public interface MuseumDao {
      O valor da anotação inclui a consulta (ou instrução T-SQL) que será executada
      quando esse método for chamado. Essa consulta é verificada no momento da
      compilação pelo Room para garantir que seja compilada corretamente no banco de dados.
+
+     É possivel criar Querie’s personalizadas para os select’s, insert’s, delete’s e
+     update’s.
      */
     @Query("SELECT * FROM museums ORDER BY UPPER(museumName) ASC")
     LiveData<List<Museum>> getAllMuseums();

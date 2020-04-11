@@ -118,6 +118,11 @@ import androidx.room.PrimaryKey;
      Data binding - É uma técnica que liga fontes de dados entre um provedor de
      conteúdo (banco de dados ou serviço em nuvem) e seu consumidor (aplicativo)
      mantendo os valores sincronizados.
+
+ [4] Sugestões para consultar:
+     - Guia do Desenvolvedor em https://developer.android.com/guide
+     - Guia Prático em https://guides.codepath.com/android
+
  */
 
 /**
@@ -137,9 +142,10 @@ import androidx.room.PrimaryKey;
  Detalhe importante [1] - os dados contidos na tabela 'museums' e em outras tabelas
  do banco de dados serão perdidos a não ser que você faça a migração de dados. Para
  saber mais e aprender como fazer a sua migração de dados leia
- https://developer.android.com/training/data-storage/room/migrating-db-versions ,
- https://proandroiddev.com/migrating-to-room-in-the-real-world-part-1-a16358e9027 e
- https://bit.ly/3aZDnVF .
+ https://developer.android.com/training/data-storage/room/migrating-db-versions
+ https://proandroiddev.com/migrating-to-room-in-the-real-world-part-1-a16358e9027
+ https://bit.ly/3aZDnVF
+ https://www.zoftino.com/database-migration-with-room
 
  Detalhe importante [2] - se não indicar um novo número de versão o aplicativo irá
  falhar (crash), ou seja, parar de funcionar. Leia mais sobre crash em

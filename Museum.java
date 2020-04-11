@@ -121,7 +121,8 @@ import androidx.room.PrimaryKey;
  */
 
 /**
- @Entity
+ Anotação '@Entity'
+
  Por fazermos uso da Room teremos que possuir um conjunto de dados relacionados
  que são definidos como entidades, ou seja, para cada entidade, uma tabela é criada
  no banco de dados (objeto Database) asssociado para armazenar os itens.
@@ -183,7 +184,7 @@ public class Museum {
      membros privativos da classe e em seguida criará os "getter" e "setter" públicos
      para esse campo.
 
-     Destaco que o Room utiliza as convenções do JavaBeans, ou seja,
+     Destaco que o Room utiliza as convenções (padrões) do JavaBeans, ou seja,
      um 'acordo' para especificar estruturas de dados disfarçadas de classe com um
      construtor vazio para a classe. Porém para nossos estudos nosso construtor não será
      vazio.
@@ -226,7 +227,23 @@ public class Museum {
      acessores servem para pegarmos (get) ou definirmos (set) informações dos
      membros (variáveis) da classe que são definidas como 'private'
 
-     Encontre os membros e faça as anotações '@' das restrições necessárias.
+     Encontre os membros e faça as anotações '@' das restrições necessárias. São elas:
+
+        @PrimaryKey - marca um campo como campo de chave primária.
+
+        @ForeignKey - define a restrição de chave estrangeira.
+
+        @Ignore     - ignora o campo marcado, não fará parte da tabela.
+
+        @ColumnInfo - especifica o nome da coluna no banco de dados, em vez de usar o
+                      nome do campo como nome da coluna.
+
+        @Index      - cria índice para acelerar as consultas.
+
+        @Embedded   - marca um campo como incorporado que transforma todos os subcampos
+                      da classe incorporada como colunas da entidade.
+
+        @Relation:   especifica relações, úteis para buscar entidades relacionadas
 
      Caso seja necessário, por exemplo, converter o conteúdo textual em maiúsculo e
      remover espaços em branco do membro você pode fazer isso no 'set' do membro. Acredite,

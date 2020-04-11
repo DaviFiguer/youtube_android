@@ -243,7 +243,7 @@ public class Museum {
         @Embedded   - marca um campo como incorporado que transforma todos os subcampos
                       da classe incorporada como colunas da entidade.
 
-        @Relation:   especifica relações, úteis para buscar entidades relacionadas
+        @Relation   - especifica relações, úteis para buscar entidades relacionadas
 
      Caso seja necessário, por exemplo, converter o conteúdo textual em maiúsculo e
      remover espaços em branco do membro você pode fazer isso no 'set' do membro. Acredite,

@@ -387,7 +387,7 @@ public class MuseumRepository {
     //webservice vai tambem aqui, lógico se sua aplicação fizer uso de webservice
 
     /**
-     Métodos 'insert()' 'update()' 'delete()' 'deleteAll()'
+     Métodos de callbacks 'insert()' 'update()' 'delete()' 'deleteAll()'
 
      Esses métodos tem como argumento o objeto 'museum' que representa a classe 'Museum',
      ou seja, este argumento é um museu que existe no mundo real.

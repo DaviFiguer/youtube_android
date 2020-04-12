@@ -27,6 +27,7 @@ package com.example.agendiario;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -118,19 +119,25 @@ public interface MuseumDao {
     void updateMuseum(Museum museum);
 
     /**
-     Anotação '@Delete' - Não foi utilizada neste exemplo
+     Anotação '@Delete'
 
      Marca um método em uma classe Dao como um método de exclusão. A implementação do
      método excluirá a linha da tabela no banco de dados.
 
-     Veja o código:
+     Veja o código 1 - executa a exclusão:
      @Delete
      void delete(Museum museum);
+
+     Veja o código 2 - executa a exclusão e obtém um inteiro indicando a exclusão
+     @Delete
+     int deleteMuseum(Museum museum);
 
      Ele excluirá o objeto exato que é armazenado no banco de dados com os mesmos
      valores. 'Museum' é a classe de modelo que representa a entidade e 'museum' é
      o objeto.
      */
+    @Delete
+    int deleteMuseum(Museum museum);
 
     @Query("DELETE FROM museums WHERE museumName = :eraseMuseumName")
     void deleteMuseumName(String eraseMuseumName);

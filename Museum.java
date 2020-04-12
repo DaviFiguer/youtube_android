@@ -168,12 +168,85 @@ import androidx.room.PrimaryKey;
      conteúdo (banco de dados ou serviço em nuvem) e seu consumidor (aplicativo)
      mantendo os valores sincronizados.
 
+ [5] Práticas recomendadas (extraído e adaptado de https://bit.ly/3a7Kt9f)
 
+     "(...) Práticas recomendadas
 
+     A programação é um campo criativo, e a criação de apps Android não é uma exceção. Há
+     muitas maneiras de resolver um problema, seja comunicando dados entre várias atividades ou
+     fragmentos, recuperando dados remotos e mantendo-os localmente no modo off-line ou qualquer
+     outro cenário comum que os apps não triviais encontrem.
 
+     Embora as recomendações a seguir não sejam obrigatórias, a experiência mostra que
+     segui-las torna sua base de código mais robusta, testável e sustentável em longo prazo:
 
+     (a) Evite designar os pontos de entrada do seu app, como atividades, serviços e broadcast
+         receivers, como fontes de dados.
 
- [5] Sugestões de consultas:
+         Em vez disso, eles precisam se coordenar apenas com outros componentes para recuperar
+         o subconjunto de dados relevante para esse ponto de entrada. Cada componente do app
+         tem vida curta, dependendo da interação do usuário com o dispositivo e da integridade
+         geral do sistema.
+
+     (b) Crie limites de responsabilidade bem definidos entre os vários módulos do seu app.
+
+         Por exemplo, não divulgue o código que carrega dados da rede em várias classes ou
+         pacotes na sua base de código. Da mesma forma, não defina diversas responsabilidades
+         não relacionadas, como armazenamento de dados em memória cache e vinculação de dados,
+         na mesma classe.
+
+     (c) Exponha o mínimo possível de cada módulo.
+
+         Não caia na tentação de criar "apenas aquele" atalho que expõe um detalhe de
+         implementação interna de um módulo. Você pode ganhar um pouco de tempo no curto
+         prazo, mas pagará caro por isso tecnicamente à medida que sua base de código
+         progredir ou aumentar.
+
+     (d) Sempre pense em como tornar cada módulo isoladamente testável.
+
+         Por exemplo, ter uma API bem definida para buscar dados da rede facilita os testes do
+         módulo que mantém esses dados em um banco de dados local. Se, em vez disso, você mesclar
+         a lógica desses dois módulos em um só lugar ou distribuir seu código de rede por toda
+         a base de código, será muito mais difícil, se não impossível, testá-los.
+
+     (e) Concentre-se no núcleo exclusivo do seu app para que ele se destaque de outros apps.
+
+         Não reinvente a roda escrevendo o mesmo código clichê várias vezes. Em vez disso,
+         concentre seu tempo e energia no que torna seu app único e deixe que os Componentes de
+         arquitetura do Android e outras bibliotecas recomendadas lidem com o clichê repetitivo.
+
+         O 'clichê', no sentido figurado, é uma ideia já muito batida, uma fórmula muito repetida
+         de falar ou escrever e até mesmo programar. Quando pensamos em um app devemos fazê-lo de
+         modo a criar uma nova experiência para o usuário ou ajudar a solucionar um problema
+         que impacta a vida do nosso usuário. Dito de outro modo : alguém aqui, em sã consciência,
+         vai reeinventar 'a roda' ou o aplicativo TikTok?
+
+         Procure criar um app pequeno e passe a dominar com calma a sua base de código. Entender
+         e compreender cada parte do código é fundamental para a sua evolução como programador
+         de aplicativos.
+
+     (f) Aplique o máximo de persistência possível em dados relevantes e atualizados.
+
+         Dessa forma, os usuários podem aproveitar a funcionalidade do seu app mesmo quando o
+         dispositivo estiver no modo off-line. Lembre-se de que nem todos os seus usuários têm
+         conectividade constante e de alta velocidade.
+
+         No Brasil, a velocidade média da internet no celular é de 13 Mb/s (Maio/2019) de acordo
+         com pesquisa divulgada pela empresa Opensignal (https://www.opensignal.com/). Veja em
+         alguns outros países: Coréia do Sul (52,4 Mb/s), Noruega (48,2 Mb/s), Canadá (42,5 Mb/s),
+         Itália (19,9 Mb/s), Israel (13,6 Mb/s) Argentina (12,8 Mb/s), Bolívia (12,5 Mb/s),
+         Nepal (4,4 Mb/s) e Iraque (1,6 Mb/s). Há uma previsão feita pela empresa Cisco
+         (https://bit.ly/3egFFll) que no ano de 2023 a velocidade média chegará a 43,9 Mb/s e
+         a 575,0 Mb/s no padrão 5G.
+
+     (g) Designe uma fonte de dados como a única fonte da verdade.
+
+         Sempre que seu app tiver que acessar esse dado, ele precisará vir dessa única fonte da
+         verdade.
+
+         Trocando em miúdos, nada de possuir o mesmo dado espalhado em vários locais diferentes.
+
+ [6] Sugestões de consultas:
 
      - Guia do Desenvolvedor em https://developer.android.com/guide
      - Guia Prático em https://guides.codepath.com/android

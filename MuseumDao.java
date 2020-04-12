@@ -128,13 +128,16 @@ public interface MuseumDao {
      @Delete
      void delete(Museum museum);
 
-     Veja o código 2 - executa a exclusão e obtém um inteiro indicando a exclusão
+     Veja o código 2 - executa a exclusão e obtém um inteiro indicando a exclusão que
+     pode ser recebido no método 'onPostExecute' da classe 'AsyncTask' presente em
+     nossa codificação na classe 'MuseumRepository' que talvez ainda não esteja codificada
      @Delete
      int deleteMuseum(Museum museum);
 
      Ele excluirá o objeto exato que é armazenado no banco de dados com os mesmos
      valores. 'Museum' é a classe de modelo que representa a entidade e 'museum' é
      o objeto.
+
      */
     @Delete
     int deleteMuseum(Museum museum);

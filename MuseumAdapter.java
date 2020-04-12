@@ -360,6 +360,21 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.MuseumView
          Ao escrever a linha de código: private MuseumViewHolder(final View itemView){ }
 
          Esteja atento para finalizar com o   }   e só depois codificar dentro das {  }
+
+         Algumas questões sobre o padrão (Pattern) ViewHolder:
+
+         1- O que é o ViewHolder Pattern?
+         Resposta : É uma abordagem utilizada para guardar um conjunto de views para que
+                    possam ser eficientemente acessadas e reutilizadas, quando necessário.
+
+         2- Qual é a finalidade do ViewHolder Pattern?
+         Resposta : A finalidade do padrão ViewHolder é guardar as views, ou seja, evitar o
+                    uso repetido de findViewById() para obter as referências às views. Ao serem
+                    guardadas num objeto ViewHolder as referencias estão disponíveis de imediato.
+
+         3- Qual é o benefícios ao utilizar ViewHolder Pattern?
+         Resposta : Evitar a perda de performance devido ao uso repetido findViewById().
+
         */
         private MuseumViewHolder(final View itemView){
             super(itemView);
@@ -369,6 +384,7 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.MuseumView
 
             /**
              onClick() e View.OnClickListener.
+
              Isso é chamado quando o usuário toca no item (no modo de toque) ou
              atribui foco ao item com as teclas de navegação ou o trackball e
              pressiona a tecla 'enter' ou o pressiona no trackball.
@@ -385,6 +401,7 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.MuseumView
 
             /**
              onLongClick() e View.OnLongClickListener
+
              Isso é chamado quando o usuário mantém o item pressionado (no
              modo de toque) ou atribui foco ao item com as teclas de navegação
              ou o trackball e mantém pressionada a tecla 'enter' ou o

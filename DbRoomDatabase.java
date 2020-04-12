@@ -80,7 +80,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
  */
 
-@Database(entities = {Book.class, City.class, MyPersonal.class}, version = 3)
+@Database(entities = {Book.class, City.class, MyPersonal.class, Museum.class}, version = 4)
 
 
 /**
@@ -269,7 +269,7 @@ public abstract class DbRoomDatabase extends RoomDatabase {
       Se você deseja começar com mais livros, cidade e etc., basta adicioná-las ao código
 
       Aviso - Esta classe é apresentada aqui para fins didáticos e não será utilizada.
-     
+
      */
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void>{

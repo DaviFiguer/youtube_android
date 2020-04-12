@@ -239,6 +239,15 @@ import androidx.room.PrimaryKey;
          (https://bit.ly/3egFFll) que no ano de 2023 a velocidade média chegará a 43,9 Mb/s e
          a 575,0 Mb/s no padrão 5G.
 
+         A persistência é ideal pelos seguintes motivos:
+
+         (i)  Seus usuários não perderão dados se o SO Android destruir seu app para liberar
+              recursos.
+
+         (ii) Seu app continuará funcionando se uma conexão de rede estiver lenta ou
+              indisponível. Baseando seu app em classes de modelo com responsabilidade bem
+              definida de gerenciamento dos dados, ele se torna mais testável e consistente.
+ 
      (g) Designe uma fonte de dados como a única fonte da verdade.
 
          Sempre que seu app tiver que acessar esse dado, ele precisará vir dessa única fonte da

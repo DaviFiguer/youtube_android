@@ -66,8 +66,57 @@ import androidx.room.PrimaryKey;
      Build.Gradle(app). O link apresenta como fazer isso para o seu aplicativo
      https://developer.android.com/jetpack/androidx/releases/room
 
- [3] Utilizaremos para desenvolvimento do aplicativo um modelo didático baseado no
-     padrão arquitetural Model View ViewModel (MVVM). O objetivo do MVVM é prover
+ [3] Arquitetura do aplicativo
+
+     A arquitetura do aplicativo do Twitter é a mesma utilizada pelo Telegram em termos de
+     desenvolvimento, infraestrutura, segurança, atualização e recursos?
+
+     É impossível ter uma única maneira de criar aplicativos que seja a melhor (a ideal) para
+     todos os cenários.  Dito isso, essa arquitetura recomendada é um bom ponto de partida
+     para a maioria das situações e dos fluxos de trabalho. Se você já tem uma boa maneira de
+     programar aplicativos Android que segue os princípios de arquitetura comuns, não é
+     necessário mudá-la.
+
+     Visão geral da arquitetura que iremos utilizar (isso não quer dizer que vamos programar
+     seguindo a sequencia apresentada)
+
+     Activity ou Fragment =>
+
+                 ViewModel    =>
+                   LiveData 1
+                   LiveData 2
+                   n-LiveData
+
+                           Repository  => <1> ou <2>
+
+                               <1> Model -> Room -> SQlite
+                                            (modelo de dados persistente)
+
+                               <2> Remote Data Source -> Retrofit -> webservice
+                                            (fonte de dados de back-end remota)
+
+     Resumindo a visão geral:
+
+     Activity => ViewModel => Repository => Model -> Room -> SQlite
+     Fragment => ViewModel => Repository => Model -> Room -> SQlite
+     Activity => ViewModel => Repository => Remote Data Source -> Retrofit -> webservice
+     Fragment => ViewModel => Repository => Remote Data Source -> Retrofit -> webservice
+
+     Trazendo para o aplicativo 'AGENDIARIO':
+
+     MuseumActivity > MuseumViewModel > MuseumRepository > MuseumDao > DbRoomDatabase > SQlite
+
+     Essa arquitetura (ou design) cria uma experiência para o usuário consistente e
+     agradável. Independentemente de o usuário voltar ao aplicativo alguns minutos ou vários
+     dias depois de tê-lo fechado pela última vez, ele vê instantaneamente as informações do
+     usuário que o aplicativo mantém localmente. Se esses dados estiverem desatualizados, o
+     módulo de repositório do aplicativo começará a atualizá-los em segundo plano.
+
+     Para saber mais sobre 'Princípios de Arquitetura Comumns' leia em
+     https://developer.android.com/jetpack/docs/guide#common-principles
+
+ [4] Também utilizaremos para desenvolvimento do aplicativo um modelo didático baseado
+     no padrão arquitetural Model View ViewModel (MVVM). O objetivo do MVVM é prover
      uma separação de responsabilidades, entre a view e sua lógica.
 
      Separar responsabilidades? Pra quê? A criação de testes para o Android não é algo
@@ -119,7 +168,13 @@ import androidx.room.PrimaryKey;
      conteúdo (banco de dados ou serviço em nuvem) e seu consumidor (aplicativo)
      mantendo os valores sincronizados.
 
- [4] Sugestões para consultar:
+
+
+
+
+
+ [5] Sugestões de consultas:
+
      - Guia do Desenvolvedor em https://developer.android.com/guide
      - Guia Prático em https://guides.codepath.com/android
 

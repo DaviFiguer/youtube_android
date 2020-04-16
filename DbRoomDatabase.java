@@ -117,6 +117,29 @@ public abstract class DbRoomDatabase extends RoomDatabase {
     public abstract MuseumDao mMuseumDao();
 
     /**
+     Classe 'RoomDatabase.Callback' e objeto estático 'sRoomDatabaseCallback'
+
+     Representa que o banco de dados foi aberto. Em nosso código há uma chamada comentada
+     para que se inclua um conjunto de dados pré-definidos programaticamente aqui
+     sendo repsentado pela classe 'PopulateDbAsync' e seus métodos.
+
+     */
+
+    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback(){
+        @Override
+        public void onOpen(@NonNull SupportSQLiteDatabase db){
+            super.onOpen(db);
+            // Se você deseja manter os dados através da reinicialização do aplicativo,
+            // comente a linha de código     new PopulateDbAsync(INSTANCE).execute();
+            // Ao não comentar será executada a classe 'PopulateDbAsync' que foi criado para
+            // inserir um conjunto de dados iniciais no aplicativo
+            //
+            // new PopulateDbAsync(INSTANCE).execute();
+        }
+    };
+
+
+    /**
      Singleton 'INSTANCE'
 
      Singleton é um padrão de projeto (Design Pattern) de software. Este padrão garante a
@@ -239,29 +262,6 @@ public abstract class DbRoomDatabase extends RoomDatabase {
         // Sobre migração leia mais em https://bit.ly/3b34FdZ
     }
 
-
-    /**
-     Classe 'RoomDatabase.Callback' e objeto 'sRoomDatabaseCallback'
-
-     Representa que o banco de dados foi aberto. Em nosso código há uma chamada comentada
-     para que se inclua um conjunto de dados pré-definidos programaticamente aqui
-     sendo repsentado pela classe 'PopulateDbAsync' e seus métodos.
-
-     */
-
-    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback(){
-        @Override
-        public void onOpen(@NonNull SupportSQLiteDatabase db){
-            super.onOpen(db);
-            // Se você deseja manter os dados através da reinicialização do aplicativo,
-            // comente a linha de código     new PopulateDbAsync(INSTANCE).execute();
-            // Ao não comentar será executada a classe 'PopulateDbAsync' que foi criado para
-            // inserir um conjunto de dados iniciais no aplicativo
-            //
-            // new PopulateDbAsync(INSTANCE).execute();
-        }
-    };
-
     /**
       Classe 'PopulateDbAsync'
 
@@ -269,18 +269,20 @@ public abstract class DbRoomDatabase extends RoomDatabase {
       Se você deseja começar com mais livros, cidade e etc., basta adicioná-las ao código
 
       Aviso - Esta classe é apresentada aqui para fins didáticos e não será utilizada.
-
+              O uso está comentado no objeto estático 'sRoomDatabaseCallback'
      */
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void>{
         private final BookDao mBookDao;
         private final CityDao mCityDao;
         private final MyPersonalDao mMyPersonalDao;
+        private final MuseumDao mMuseumDao;
 
         PopulateDbAsync(DbRoomDatabase mDbRoomDatabase){
             mBookDao= mDbRoomDatabase.mBookDao();
             mCityDao = mDbRoomDatabase.mCityDao();
             mMyPersonalDao = mDbRoomDatabase.mMyPersonalDao();
+            mMuseumDao = mDbRoomDatabase.mMuseumDao();
         }
 
         @Override
@@ -297,8 +299,13 @@ public abstract class DbRoomDatabase extends RoomDatabase {
             MyPersonal myPersonal = new MyPersonal("Marcos Santos", "1268marcos", -33093000, "", "Universidade Federal Fluminense" , "Pós Graduação", 2013, 1581380294   );
             mMyPersonalDao.insert(myPersonal);
 
+            mMuseumDao.deleteAllMuseums();
+            Museum museum = new Museum("MASP", "Comtemporaneo", 10, "15/04/2020  17:03:55.001");
+            mMuseumDao.insert(museum);
+
             return null;
         }
     }
+
 
 }

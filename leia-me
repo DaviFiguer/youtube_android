@@ -1,0 +1,8 @@
+Ordem de leitura destes códigos/classes
+
+[1] Museum
+[2] MuseumDao
+[3] MuseumAdapter
+[4] DbRoomDatabase
+[5] MuseumRepository
+[6] MuseumViewModel

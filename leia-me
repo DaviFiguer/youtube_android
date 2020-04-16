@@ -1,4 +1,4 @@
-Ordem de leitura destes códigos/classes
+Para melhor compreensão do código/classes recomendo esta ordem de leitura 
 
 [1] Museum
 [2] MuseumDao
@@ -6,3 +6,5 @@ Ordem de leitura destes códigos/classes
 [4] DbRoomDatabase
 [5] MuseumRepository
 [6] MuseumViewModel
+
+Sugestão, se possível, veja os vídeos na sequência no playlist Android Studio no canal do professor https://is.gd/marcosssantos

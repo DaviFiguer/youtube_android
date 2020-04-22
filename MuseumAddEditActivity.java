@@ -290,22 +290,68 @@ public class MuseumAddEditActivity extends AppCompatActivity {
     public static final String EXTRA_CREATE = "com.example.agendiario.EXTRA_CREATE";
     public static final String EXTRA_SCORE = "com.example.agendiario.EXTRA_SCORE";
 
+    /**
+     Objetos para representar os widgets apresentados na UI (View)
+
+     Esses objetos criados como membros associados a classe 'MuseumAddEditActivity' serão
+     utilizados para associar os componentes do layout com a programação da classe.
+
+     */
+
     private EditText mEditName, mEditStyle;
     private NumberPicker mNumberPickerScore;
     private Button mButton;
+
+
+    /**
+     Método 'saveMuseum()'
+
+     Criado por refatoração e será executado toda a vez que utilizarmos o objeto 'mButton' ou
+     o item de menu 'save_note'.
+
+     Há um objeto 'replyIntent' que representa a resposta (reply) a intenção da atividade
+     solicitada (add ou edit).
+
+     Nesse método temos a restrição que obriga o usuário a informar o nome e o estilo do museu. Para
+     isso utilizamos a classe 'TextUtils' e o método 'isEmpty()' que faz um verificação interna
+     para valores do tipo 'null' e só depois verifica a cadeia de caracteres testando se está vazia.
+     Esta prática é voltada para a linguagem de programação Java. Já em Kotlin, recomenda-se
+     utilizar os métodos 'isNullOrBlank()' ou 'isNullOrEmpty()'.
+
+     */
 
     private void saveMuseum(){
         Intent replyIntent = new Intent();
 
         if(TextUtils.isEmpty(mEditName.getText()) || TextUtils.isEmpty(mEditStyle.getText())) {
-            Toast.makeText(this, "Preenchimento Obrigatório", Toast.LENGTH_LONG).show();
+            // Sinalizar para o usuário que deve haver o preenchimento do nome e estilo do museu
+            Toast.makeText(this, R.string.empty_museum_title_style, Toast.LENGTH_LONG).show();
             return;
         } else {
+
+            /**
+              Recuperar (atribuir a ação do usuário para variávies e realizar o processamento)
+
+              - o texto digitado com o método 'getText()' na UI
+              - o valor selecionado com o método 'getValue()' na UI
+
+             */
+
             String name = mEditName.getText().toString();
             String style = mEditStyle.getText().toString();
             int score = mNumberPickerScore.getValue();
+
+            // obter a data do sistema
             String create = java.text.DateFormat.getDateInstance().format(new Date());
+
+            // recuperar o 'id' no caso da intenção para se editar os dados
+            // como valor padrão -1 indica que estamos na intenção para adicionar os dados
+
             int id = getIntent().getIntExtra(EXTRA_ID, -1);
+
+            // colocando 'putExtra()' os dados nas variáveis do tipo EXTRA que serão
+            // utilizadas na atividade que iniciou a atividade 'AddEdit'
+
             if(id != -1){
                 replyIntent.putExtra(EXTRA_ID, id);
             }
@@ -314,12 +360,34 @@ public class MuseumAddEditActivity extends AppCompatActivity {
             replyIntent.putExtra(EXTRA_SCORE, score);
             replyIntent.putExtra(EXTRA_CREATE, create);
             setResult(RESULT_OK, replyIntent);
-
-
         }
         finish();
 
     }
+
+
+    /**
+     Método 'onCreate()'
+
+     onCreate() é o método responsável por carregar os layouts e outras operações de inicialização.
+     O ciclo de vida completo da Activity ocorre entre a primeira chamada (callback) no
+     onCreate(Bundle) até a chamada do onDestroy(). Sendo assim, uma Activity irá executar tudo o
+     que for de caráter "global" no onCreate() e liberar todos os recursos no onDestroy().
+     Este método mantem o estado da atividade antes dela ser encerrada.
+
+     Classe Bundle - tradução Bundle = pacote, esse pacote é geralmente utilizado para passagem de
+     dados entre as várias atividades (Activity) ou componentes do Android. Bundle representa um
+     conjunto de pares "chave/valor".
+
+     Como caráter "global" neste exemplo temos:
+
+     - a definição do layout utilizado
+     - os objetos que fazem parte do layout
+     - o ícone utilizado na ActionBar
+     - a intenção do usuário (se vai adicionar ou editar)
+     - e a ação associada ao botão para gravar
+
+     */
 
     @Override
     public void onCreate(Bundle savedInstance){
@@ -351,8 +419,17 @@ public class MuseumAddEditActivity extends AppCompatActivity {
                 saveMuseum();
             }
         });
-
     }
+
+
+    /**
+     Método 'onCreateOptionsMenu()'
+
+     Utilizado para especificar (preencher) o menu de opções para uma atividade. Nesse método,
+     você pode aumentar (inflar) o recurso de menu (definido em XML) no menu fornecido como
+     retorno verdadeiro.
+
+     */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -360,6 +437,14 @@ public class MuseumAddEditActivity extends AppCompatActivity {
         menuInflater.inflate(R.menu.add_book_menu, menu);
         return true;
     }
+
+
+    /**
+     Método 'onOptionsItemSelected()'
+
+     Adicionamos alguma ação quando um item do menu for selecionado.
+
+     */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
@@ -372,22 +457,4 @@ public class MuseumAddEditActivity extends AppCompatActivity {
         }
     }
 
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

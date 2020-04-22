@@ -25,7 +25,21 @@ package com.example.agendiario;
  *
  */
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.NumberPicker;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Date;
 
 /**
  Considerações Iniciais
@@ -206,7 +220,10 @@ import androidx.appcompat.app.AppCompatActivity;
       Log.d("MA::Category", category);
       Log.d("MA::Component", intent.getComponent().getClassName());
 
- [8] Para saber mais sobre :
+ [8] Só para lembrar - utilizamos as recomendações “camelCase” e JavaBeans para nomear classes e
+     métodos.
+
+ [9] Para saber mais sobre :
 
      O ciclo de vida da atividade
      https://developer.android.com/guide/components/activities/activity-lifecycle.html
@@ -217,7 +234,7 @@ import androidx.appcompat.app.AppCompatActivity;
      Referências para o desenvolvedor sobre a classe 'AppCompatActivity'
      https://developer.android.com/reference/androidx/appcompat/app/AppCompatActivity
 
- [9] Leitura recomendada:
+ [10] Leitura recomendada:
 
      https://martinfowler.com/articles/class-too-large.html
      https://bit.ly/3eFrWVt
@@ -240,9 +257,137 @@ import androidx.appcompat.app.AppCompatActivity;
  (b) edição do museu, ou seja, em uma atividade anterior o usuário observa algum erro e deseja
  realizar a alteração nos dados informados.
 
- Essa classe estende a classe 'AppCompatActivity'
+ 'MuseumAddEditActivity' classe estende 'AppCompatActivity', ou seja, 'MuseumAddEditActivity' é
+ uma subclasse derivada da classe 'AppCompatActitivy'
+
+ Herança é um dos princípio da POO. Fazendo uso desse princípio é permitido a criação de novas
+ classes 'MuseumActivity' a partir de outras previamente criadas 'AppCompatActivity'. Para essas
+ novas classes damos o nome de subclasses, ou melhor, classes derivadas. As classes já existentes
+ anteriormente e que deram origem (extends) às subclasses, são chamadas de superclasses, ou ainda,
+ classes base. Assim, é possível criarmos uma hierarquia dessas classes, tornando, assim, classes
+ mais amplas e classes mais específicas. Uma classe derivada herda métodos e atributos PÚBLICOS e
+ PROTEGIDOS de sua superclasse. Métodos e atributos definidos como PRIVADOS não são herdados. Indo
+ um pouco além, podemos sobreescrever os métodos e fazer que eles tenham uma forma mais específica
+ de representar o comportamento do método herdado.
+
  */
 
 public class MuseumAddEditActivity extends AppCompatActivity {
 
+    /**
+     EXTRAS
+
+     Variáveis utilizados para receber valores de outra atividade
+
+     Na verdade, você não precisa dessa variável para que o código funcione, mas é uma boa prática
+     usar valores constantes em vez de apenas codificar valores de string
+
+     */
+
+    public static final String EXTRA_ID = "com.example.agendiario.EXTRA_ID";
+    public static final String EXTRA_NAME = "com.example.agendiario.EXTRA_NAME";
+    public static final String EXTRA_STYLE = "com.example.agendiario.EXTRA_STYLE";
+    public static final String EXTRA_CREATE = "com.example.agendiario.EXTRA_CREATE";
+    public static final String EXTRA_SCORE = "com.example.agendiario.EXTRA_SCORE";
+
+    private EditText mEditName, mEditStyle;
+    private NumberPicker mNumberPickerScore;
+    private Button mButton;
+
+    private void saveMuseum(){
+        Intent replyIntent = new Intent();
+
+        if(TextUtils.isEmpty(mEditName.getText()) || TextUtils.isEmpty(mEditStyle.getText())) {
+            Toast.makeText(this, "Preenchimento Obrigatório", Toast.LENGTH_LONG).show();
+            return;
+        } else {
+            String name = mEditName.getText().toString();
+            String style = mEditStyle.getText().toString();
+            int score = mNumberPickerScore.getValue();
+            String create = java.text.DateFormat.getDateInstance().format(new Date());
+            int id = getIntent().getIntExtra(EXTRA_ID, -1);
+            if(id != -1){
+                replyIntent.putExtra(EXTRA_ID, id);
+            }
+            replyIntent.putExtra(EXTRA_NAME, name);
+            replyIntent.putExtra(EXTRA_STYLE, style);
+            replyIntent.putExtra(EXTRA_SCORE, score);
+            replyIntent.putExtra(EXTRA_CREATE, create);
+            setResult(RESULT_OK, replyIntent);
+
+
+        }
+        finish();
+
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstance){
+        super.onCreate(savedInstance);
+        setContentView(R.layout.activity_new_museum);
+        mEditName = findViewById(R.id.edit_museum_name);
+        mEditStyle = findViewById(R.id.edit_museum_style);
+        mNumberPickerScore = findViewById(R.id.number_picker_score_museum);
+        mNumberPickerScore.setMinValue(0);
+        mNumberPickerScore.setMaxValue(10);
+
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
+
+        Intent intent = getIntent();
+
+        if(intent.hasExtra(EXTRA_ID)){
+            setTitle(R.string.edit_museum);
+            mEditName.setText(intent.getStringExtra(EXTRA_NAME));
+            mEditStyle.setText(intent.getStringExtra(EXTRA_STYLE));
+            mNumberPickerScore.setValue(intent.getIntExtra(EXTRA_SCORE, 0));
+        } else {
+            setTitle(R.string.add_new_museum);
+        }
+
+        mButton = findViewById(R.id.button_save_museum);
+
+        mButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                saveMuseum();
+            }
+        });
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.add_book_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.save_note:
+                saveMuseum();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

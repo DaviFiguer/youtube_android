@@ -6,5 +6,6 @@ Para melhor compreensão do código/classes recomendo esta ordem de leitura
 [4] DbRoomDatabase
 [5] MuseumRepository
 [6] MuseumViewModel
+[7] MuseumAddEditActivity
 
 Sugestão, se possível, veja os vídeos na sequência no playlist Android Studio no canal do professor https://is.gd/marcosssantos

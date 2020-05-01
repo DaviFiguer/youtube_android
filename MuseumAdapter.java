@@ -79,6 +79,12 @@ import java.util.List;
       nas Views. Leia mais em https://guides.codepath.com/android/Basic-Event-Listeners
  */
 
+/**
+ Classe 'MuseumAdapter'
+
+ Esta classe representa o Adaptador que faz o link entre o RecyclerView e o ViewHolder.
+ */
+
 public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.MuseumViewHolder> implements Filterable {
 
     /**
@@ -491,7 +497,9 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.MuseumView
         // substitui o conteúdo da visualização principal (holder) por esse elemento (current)
         holder.text_name_view_holder.setText(current.getName());
         holder.text_style_view_holder.setText(current.getStyle());
-        holder.text_score_view_holder.setText(current.getScore());
+        // causa erro     necessário valueOf       holder.text_score_view_holder.setText(current.getScore());
+        holder.text_score_view_holder.setText(String.valueOf(current.getScore()));
+
         // para a imagem deve ser feito aqui ;-)
     }
 
@@ -551,3 +559,5 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.MuseumView
     }
 
 }
+
+//linha 499 e 500

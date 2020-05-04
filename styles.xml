@@ -1,0 +1,41 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+<!--        <item name="android:datePickerStyle">@style/MyDatePicker</item>-->
+
+
+    </style>
+
+    <style name="AlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+<!--        <item name="android:colorAccent">#B71C1C</item>-->
+        <item name="android:textColor">#E0FFFF</item>
+        <item name="android:textColorPrimary">#E0FFFF</item>
+        <item name="android:background">#E91E63</item>
+    </style>
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:actionModeBackground">@color/colorAccentOption</item>
+    </style>
+
+
+
+
+<!--    <style name="MyDatePicker" parent="@android:style/Widget.DatePicker">-->
+<!--        <item name="android:calendarViewShown">false</item>-->
+<!--        <item name="android:datePickerMode">spinner</item>-->
+<!--    </style>-->
+
+
+
+
+</resources>

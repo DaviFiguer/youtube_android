@@ -1,0 +1,123 @@
+<resources>
+
+    <string name="app_name">Agenda e Diário</string>
+    <string name="app_nickname">Agendiário</string>
+    <string name="search_hint">Pesquisar</string>
+    <string name="app_semantic_version">v0.1.1</string>
+
+    <string name="add_image">Adicionar imagem</string>
+
+    <string name="save_button">Gravar Os Dados</string>
+    <string name="update_button">Alterar</string>
+
+    <string name="save_success">Sucesso ao Gravar</string>
+    <string name="save_fail">Falha ao Gravar</string>
+    <string name="update_fail">Falha ao Alterar</string>
+    <string name="update_success">Sucesso ao Alterar</string>
+
+    <string name="message_delete_all">Todos excluídos</string>
+
+    <string name="add_new_book">Novo Livro</string>
+    <string name="edit_book">Editar Livro</string>
+    <string name="text_hint_book_title">Digite o título do livro</string>
+    <string name="text_hint_book_author">Digite o nome do autor</string>
+    <string name="text_hint_book_score">Qual a avaliação do livro?</string>
+    <string name="empty_book_title_author">Por favor informe o título e nome do autor.</string>
+
+
+
+    <string name="add_new_museum">Novo Museu</string>
+    <string name="edit_museum">Editar Museu</string>
+    <string name="text_hint_museum_name">Digite o nome do museu</string>
+    <string name="text_hint_museum_style">Digite o estilo do museu</string>
+    <string name="text_hint_museum_score">Qual a avaliação do museu?</string>
+    <string name="empty_museum_title_style">Por favor informe o nome e o estilo do museu.</string>
+
+
+    <string name="add_my_personal">Novos dados pessoais</string>
+    <string name="edit_my_personal">Editar dados pessoais</string>
+    <string name="text_hint_personal_name">Informe o seu nome completo</string>
+    <string name="text_hint_personal_nickname">Como você gostaria de ser chamado?</string>
+    <string name="text_hint_personal_birth_date">Informe a sua data de nascimento</string>
+    <string name="text_hint_personal_school_name">Informe o nome da última escola que frequentou</string>
+    <string name="text_hint_personal_academic_formation">Informe o nível da sua formação</string>
+    <string name="text_hint_personal_year_graduation">Informe o ano de conclusão</string>
+    <string name="text_birth_date">Data de nascimento</string>
+    <string name="empty_personal_name_nickname">Por favor informe o seu nome e seu apelido</string>
+
+
+    <string name="add_new_city">Nova Cidade</string>
+    <string name="edit_city">Editar Cidade</string>
+    <string name="text_hint_city_name">Digite o nome da cidade</string>
+    <string name="text_hint_city_geo">Digite a localização da cidade</string>
+    <string name="text_hint_city_score">Qual a avaliação da cidade?</string>
+    <string name="empty_city_title_author">Por favor informe o nome a localização da cidade.</string>
+
+
+    <string name="delete_item_long_click_message">Ops! Apenas deslize para excluir.</string>
+    <string name="delete_item">Excluir</string>
+    <string name="delete_item_message">Você tem certeza que deseja excluir?</string>
+    <string name="delete_all_item">Excluir todos</string>
+
+    <string name="action_delete">Excluir</string>
+    <string name="action_search">Procurar</string>
+
+    <string name="bottom_bar_back">Voltar</string>
+    <string name="bottom_bar_search">Pesquisar</string>
+    <string name="bottom_bar_sort">Ordenar</string>
+    <string name="bottom_bar_random">Aleatório</string>
+    <string name="bottom_bar_settings">Configurações</string>
+    <string name="bottom_bar_logout">Logout</string>
+    <string name="bottom_bar_birthday">Aniversariantes</string>
+    <string name="bottom_bar_meeting">Reunião</string>
+    <string name="bottom_bar_search_day">Pesquisar Dia</string>
+
+    <string name="response_yes">Sim</string>
+    <string name="response_no">Não</string>
+
+    <string name="radio_on">Sim</string>
+    <string name="radio_off">Não</string>
+
+    <string name="radio_call_on">Ligou</string>
+    <string name="radio_call_off">Não Ligou</string>
+
+    <string name="register_today">Hoje, você</string>
+    <string name="register_learn">Aprendeu ou tentou algo novo</string>
+    <string name="register_kind">Foi gentil com você mesmo</string>
+    <string name="register_help">Ajudou alguém</string>
+    <string name="register_did_something_difficult">Fez algo difícil</string>
+    <string name="register_attended_some_meeting">Participou de alguma reunião</string>
+    <string name="register_had_some_difficulty">Teve alguma dificuldade</string>
+    <string name="register_evaluate">Avalie o seu dia</string>
+<!--    <string name="register_new_word">Aprendeu uma palavra nova (vocabulario - item)</string>-->
+
+    <string name="text_activity_phrases">Frases</string>
+    <string name="text_activity_main">Vamos lá!</string>
+    <string name="text_activity_register">Registros e Anotações</string>
+    <string name="text_activity_my_personal">Meus Dados Pessoais</string>
+    <string name="text_activity_playlist">Playlist</string>
+    <string name="text_activity_movies">Filmes</string>
+    <string name="text_activity_museums">Museus</string>
+    <string name="text_activity_comics">Quadrinhos</string>
+    <string name="text_activity_books">Livros</string>
+    <string name="text_activity_cities">Cidades</string>
+    <string name="text_activity_economy">Econômetro</string>
+    <string name="text_activity_events">Eventos e Acontecimentos Importantes</string>
+    <string name="text_activity_persons">Pessoas que Conheci</string>
+    <string name="text_activity_ideas">Espaço das Idéias</string>
+
+    <!-- futura implementacao -->
+<!--    <string name="text_activity_vocabulary">Vocabulário</string>-->
+<!--    <string name="text_activity_skills">Roda das habilidades</string>-->
+<!--    <string name="text_empathy">Empatia</string>-->
+<!--    <string name="text_daily_planning">Planejamento diário</string>-->
+<!--    <string name="text_courses">Cursos</string>-->
+<!--    <string name="text_social_life">Vida Social</string>-->
+<!--    <string name="text_term">Prazos</string>-->
+<!--    <string name="text_networking">Networking</string>-->
+<!--    <string name="text_career_update">Atualização profissional</string>-->
+<!--    <string name="text_schedules">Horários</string>-->
+<!--    <string name="text_todo_before_years">Coisas para fazer antes dos ... anos</string>-->
+
+
+</resources>

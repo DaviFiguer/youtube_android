@@ -83,6 +83,16 @@ import java.util.List;
  Classe 'MuseumAdapter'
 
  Esta classe representa o Adaptador que faz o link entre o RecyclerView e o ViewHolder.
+
+ O adaptador é o principal código responsável pelo RecyclerView. Ele contém todos os métodos
+ importantes que lidam com a implementação do RecyclerView. Um adaptador RecyclerView, como
+ qualquer outro adaptador, tem a responsabilidade de vincular conjuntos de dados às Views que
+ serão exibidas na janela. Os métodos básicos para uma implementação bem-sucedida são:
+
+ - onCreateViewHolder(ViewGroup parent, int viewType)
+ - onBindViewHolder(RecyclerView.ViewHolder holder, int position)
+ - getItemCount()
+
  */
 
 public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.MuseumViewHolder> implements Filterable {
@@ -252,8 +262,10 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.MuseumView
 
     /**
        método 'getItemCount()'
-       Retornar o tamanho (quantidade de elementos) do seu conjunto de
-       dados (Dataset) que foi chamado (invocado) pelo gerenciador de layout
+
+       Retornar o tamanho (quantidade de elementos) do seu conjunto de dados (Dataset) que foi
+       chamado (invocado) pelo gerenciador de layout, ou seja, o número de itens inflados ou
+       presentes nele.
      */
     @Override
     public int getItemCount(){
@@ -325,6 +337,8 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.MuseumView
 
     /**
        Classe 'MuseumViewHolder'
+
+       Podemos dizer que é uma subclasse dentro da classe 'MuseumAdapter'
 
        Fornece uma referência às visualizações para cada item de dados.
        Importante - Ocorre que para itens de dados complexos poderemos precisar de
@@ -453,6 +467,7 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.MuseumView
 
     /**
         método 'onCreateViewHolder()'
+
         Criar suporte para novas visualizações (chamadas pelo gerenciador de layout)
         A visualização 'itemView' utiliza-se do recurso de
         layout 'recyclerview_item_museums' quando este é chamado o infla, ou seja,
@@ -467,6 +482,10 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.MuseumView
         nenhum dado específico, o método 'onCreateViewHolder' não define o
         conteúdo da visualização por si só. Para isso acontecer é necessário
         o método 'onBindViewHolder()'
+
+        Ele lida com a inflação do layout como um item para o RecyclerView. Esse método é chamado
+        exatamente quando o adaptador é criado e é usado para inicializar seus ViewHolder(s)
+
      */
     @Override
     public MuseumViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
@@ -489,6 +508,10 @@ public class MuseumAdapter extends RecyclerView.Adapter<MuseumAdapter.MuseumView
         visualização. Por exemplo, se RecyclerView estiver exibindo uma lista de
         nomes, o método poderá encontrar o nome apropriado na lista e preencher o
         widget TextView do fixador de visualização.
+
+        Ele lida com a configuração de diferentes dados e métodos relacionados a cliques em
+        itens específicos do RecyclerView.
+
      */
     @Override
     public void onBindViewHolder(MuseumViewHolder holder, int position){
